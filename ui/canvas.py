@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Optional
 
 from PySide6.QtCore import QPointF, Qt, Signal
-from PySide6.QtGui import QBrush, QColor, QPen
+from PySide6.QtGui import QBrush, QColor, QPainter, QPen
 from PySide6.QtWidgets import (
     QGraphicsLineItem,
     QGraphicsScene,
@@ -41,7 +41,7 @@ class WorkbenchCanvas(QGraphicsView):
         self._scene.setBackgroundBrush(QBrush(QColor(25, 25, 35)))
         self.setScene(self._scene)
 
-        self.setRenderHint(self.renderHints().value | 0x01)  # Antialiasing
+        self.setRenderHint(QPainter.RenderHint.Antialiasing)  # Antialiasing
         self.setDragMode(QGraphicsView.DragMode.NoDrag)
         self.setTransformationAnchor(QGraphicsView.ViewportAnchor.AnchorUnderMouse)
 
